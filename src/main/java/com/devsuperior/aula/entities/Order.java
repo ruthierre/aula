@@ -24,14 +24,23 @@ public class Order {
     }
 
     public void setBasic(double basic) {
+        if (basic < 0.0) {
+            throw new IllegalArgumentException("Basic must be positive");
+        }
         this.basic = basic;
     }
 
-    public double getDiscount() {
+    public double getDiscount() {      
         return discount;
     }
 
     public void setDiscount(double discount) {
+        if (discount > basic) {
+            throw new IllegalArgumentException("Discount can't be greater than basic value");
+        }
+        if (discount < 0.0) {
+            throw new IllegalArgumentException("Discount can't be negative");
+        }
         this.discount = discount;
     }
 
